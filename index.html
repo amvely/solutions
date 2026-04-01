@@ -410,103 +410,36 @@
       --sidebar-w: 0px;
     }
 
-    /* 좌측 레일 → 하단 탭바로 전환 */
+    /* 하단 탭바 완전 숨김 */
     #sidebar-rail {
-      position: fixed;
-      left: 0; top: auto; bottom: 0;
-      width: 100vw; height: 60px;
-      flex-direction: row;
-      justify-content: space-around;
-      align-items: center;
-      padding: 0 8px;
-      border-right: none;
-      border-top: 1px solid var(--border);
-      z-index: 1000;
-      gap: 0;
+      display: none;
     }
 
-    .rail-logo {
-      display: none; /* 모바일에서 로고 숨김 */
-    }
-    .rail-divider { display: none; }
-
-    .rail-item {
-      width: 44px; height: 44px;
-      border-radius: 12px;
-    }
-
-    /* 활성 인디케이터 - 하단바에서는 상단 선으로 */
-    .rail-item::before {
-      left: 50%; top: -1px;
-      transform: translateX(-50%) scaleX(0);
-      width: 24px; height: 3px;
-      border-radius: 0 0 3px 3px;
-    }
-    .rail-item.active::before {
-      transform: translateX(-50%) scaleX(1);
-    }
-
-    /* 팝업 패널 → 하단 시트로 전환 */
+    /* 팝업 패널 숨김 (하단바 없으므로 불필요) */
     .popup-panel {
-      left: 0;
-      top: auto;
-      bottom: 60px;
-      width: 100vw;
-      height: auto;
-      max-height: 60vh;
-      border-right: none;
-      border-top: 1px solid var(--border);
-      border-radius: 16px 16px 0 0;
-      transform: translateY(100%);
-      transition: transform var(--transition);
-    }
-    .popup-panel.open {
-      transform: translateY(0);
+      display: none !important;
     }
 
-    /* 팝업 헤더 작게 */
-    .popup-header {
-      padding: 14px 16px 10px;
-    }
-    .popup-header h3 { font-size: 13px; }
-
-    /* 메뉴 가로 스크롤 그리드 */
-    .popup-menu {
-      display: flex;
-      flex-direction: row;
-      flex-wrap: wrap;
-      gap: 6px;
-      padding: 10px 12px;
-      overflow-y: auto;
-      max-height: 30vh;
-    }
-    .menu-section-label {
-      width: 100%;
-      padding: 4px 4px 2px;
-    }
-    .menu-item {
-      flex: 0 0 calc(50% - 4px);
-      border-radius: 10px;
-      background: rgba(255,255,255,0.04);
-      padding: 10px 10px;
-      font-size: 12px;
-    }
-
-    /* 메인 영역 - 전체 높이 */
+    /* 메인 영역 - 전체 화면, 스크롤 허용 */
     #main-area {
       left: 0;
       width: 100vw;
       height: 100vh;
-    }
-
-    /* 웰컴 화면 */
-    #welcome {
-      justify-content: flex-start;
       overflow-y: auto;
     }
 
+    /* 웰컴 화면 - 스크롤 허용 */
+    #welcome {
+      position: relative;
+      justify-content: flex-start;
+      overflow-y: auto;
+      overflow-x: hidden;
+      min-height: 100%;
+      height: auto;
+    }
+
     .welcome-inner {
-      padding: 24px 0 32px;
+      padding: 24px 0 40px;
     }
 
     .welcome-headline {
@@ -547,6 +480,15 @@
     #ai-fab {
       bottom: 20px;
       right: 16px;
+    }
+  }
+
+  /* 모바일: body 스크롤 허용 */
+  @media (max-width: 768px) {
+    body {
+      overflow: auto;
+      height: auto;
+      min-height: 100vh;
     }
   }
 
