@@ -340,6 +340,12 @@
   .welcome-card[data-app="8"]:hover { border-color: rgba(244,114,182,0.5); }
   .welcome-card[data-app="8"]::after { background: radial-gradient(circle at 80% 20%, rgba(244,114,182,0.08), transparent 60%); }
 
+  .rail-item[data-app="9"] { color: #4ade80; }
+  .rail-item[data-app="9"].active { background: rgba(74,222,128,0.15); }
+  .menu-item[data-app="9"].active { background: rgba(74,222,128,0.1); color: #86efac; }
+  .welcome-card[data-app="9"]:hover { border-color: rgba(74,222,128,0.5); }
+  .welcome-card[data-app="9"]::after { background: radial-gradient(circle at 80% 20%, rgba(74,222,128,0.08), transparent 60%); }
+
   .card-icon { font-size: 28px; line-height: 1; }
   .card-title { font-size: 13px; font-weight: 700; color: var(--text); }
   .card-desc { font-size: 11px; color: var(--muted); line-height: 1.5; }
@@ -544,6 +550,10 @@
   <button class="rail-item" data-app="8"
     onmouseenter="openPopup(8)" onclick="mobileTabClick(event,8,'external8')" title="광고주 검색 솔루션(MO)">
     📱
+  </button>
+  <button class="rail-item" data-app="9"
+    onmouseenter="openPopup(9)" onclick="mobileTabClick(event,9,'download9')" title="ADVoost 체크 솔루션">
+    🛒
   </button>
 </div>
 
@@ -779,6 +789,26 @@
   </div>
 </div>
 
+<!-- 앱9: ADVoost 체크 솔루션 -->
+<div class="popup-panel" id="popup-9" onmouseenter="keepOpen(9)" onmouseleave="closePopup()">
+  <div class="popup-header">
+    <div class="popup-app-badge"><span style="font-size:10px; font-weight:500; color:#4ade80; opacity:0.9;">🛒 GFA광고 체크</span></div>
+    <h3>ADVoost 체크 솔루션</h3>
+    <p>통합검색/네이버쇼핑에서 ADVoost 광고 체크</p>
+  </div>
+  <div class="popup-menu">
+    <div class="menu-section-label">설치</div>
+    <button class="menu-item" data-app="9" onclick="downloadGfaSolution()">
+      <span class="item-icon">⬇️</span><span class="item-label">확장프로그램 다운로드</span>
+    </button>
+  </div>
+  <div class="popup-footer">
+    <button class="launch-btn" style="background:rgba(74,222,128,0.18);color:#86efac;" onclick="downloadGfaSolution(); closePopup();">
+      ⬇️ 확장프로그램 다운로드
+    </button>
+  </div>
+</div>
+
 <!-- 메인 영역 -->
 <div id="main-area">
   <!-- 웰컴 화면 -->
@@ -826,13 +856,19 @@
       <div class="welcome-card" data-app="7" onclick="downloadPcSolution()">
         <div class="card-icon">🖥️</div>
         <div class="card-title">광고주 검색 솔루션<br><span style="font-size:10px; font-weight:500; color:#a78bfa; opacity:0.9;">PC 확장프로그램 ver</span></div>
-        <div class="card-desc">브라우저 확장프로그램으로<br>등록 후 사용</div>
+        <div class="card-desc">광고주별 광고시스템에<br>빠르게 접속할 수 있는 솔루션</div>
 
       </div>
       <div class="welcome-card" data-app="8" onclick="window.open('https://amvely.github.io/db', '_blank')">
         <div class="card-icon">📱</div>
         <div class="card-title">광고주 검색 솔루션<br><span style="font-size:10px; font-weight:500; color:#f472b6; opacity:0.9;">Mobile ver</span></div>
-        <div class="card-desc">모바일 환경에서 즐겨찾기<br>홈화면 추가 후 사용</div>
+        <div class="card-desc">모바일 환경에서 광고시스템에<br>빠르게 접속할 수 있는 솔루션</div>
+
+      </div>
+      <div class="welcome-card" data-app="9" onclick="downloadGfaSolution()">
+        <div class="card-icon">🛒</div>
+        <div class="card-title">ADVoost 체크 솔루션<br><span style="font-size:10px; font-weight:500; color:#4ade80; opacity:0.9;">PC 확장프로그램 ver</span></div>
+        <div class="card-desc">통합검색 및 네이버쇼핑에서<br>ADVoost 별도 체크</div>
 
       </div>
     </div>
@@ -880,6 +916,8 @@ function mobileTabClick(e, appId, mode) {
       downloadPcSolution();
     } else if (mode === 'external8') {
       window.open('https://amvely.github.io/db', '_blank');
+    } else if (mode === 'download9') {
+      downloadGfaSolution();
     } else {
       launchApp(appId);
     }
@@ -898,6 +936,8 @@ function mobileTabClick(e, appId, mode) {
       downloadPcSolution();
     } else if (mode === 'external8') {
       window.open('https://amvely.github.io/db', '_blank');
+    } else if (mode === 'download9') {
+      downloadGfaSolution();
     } else {
       launchApp(appId);
     }
@@ -939,6 +979,15 @@ function downloadPcSolution() {
   const a = document.createElement('a');
   a.href = 'https://github.com/amvely/solutions/releases/download/solutions/pc.zip';
   a.download = 'pc.zip';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+}
+
+function downloadGfaSolution() {
+  const a = document.createElement('a');
+  a.href = 'https://github.com/amvely/solutions/releases/download/solutions/N.GFA.zip';
+  a.download = 'N.GFA.zip';
   document.body.appendChild(a);
   a.click();
   document.body.removeChild(a);
