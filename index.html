@@ -552,8 +552,8 @@
     📱
   </button>
   <button class="rail-item" data-app="9"
-    onmouseenter="openPopup(9)" onclick="mobileTabClick(event,9,'download9')" title="ADVoost 체크 솔루션">
-    🛒
+    onmouseenter="openPopup(9)" onclick="mobileTabClick(event,9,'download9')" title="AD Insight 솔루션">
+    🔍
   </button>
 </div>
 
@@ -789,12 +789,12 @@
   </div>
 </div>
 
-<!-- 앱9: ADVoost 체크 솔루션 -->
+<!-- 앱9: AD Insight 솔루션 -->
 <div class="popup-panel" id="popup-9" onmouseenter="keepOpen(9)" onmouseleave="closePopup()">
   <div class="popup-header">
-    <div class="popup-app-badge"><span style="font-size:10px; font-weight:500; color:#4ade80; opacity:0.9;">🛒 GFA광고 체크</span></div>
-    <h3>ADVoost 체크 솔루션</h3>
-    <p>통합검색/네이버쇼핑에서 ADVoost 광고 체크</p>
+    <div class="popup-app-badge"><span style="font-size:10px; font-weight:500; color:#4ade80; opacity:0.9;">🔍 AD Insight</span></div>
+    <h3>AD Insight 솔루션</h3>
+    <p>쇼핑광고/애드부스트 감지<br>스크립트 감지 / 키워드 인사이트</p>
   </div>
   <div class="popup-menu">
     <div class="menu-section-label">설치</div>
@@ -866,9 +866,9 @@
 
       </div>
       <div class="welcome-card" data-app="9" onclick="downloadGfaSolution()">
-        <div class="card-icon">🛒</div>
-        <div class="card-title">ADVoost 체크 솔루션<br><span style="font-size:10px; font-weight:500; color:#4ade80; opacity:0.9;">PC 확장프로그램 ver</span></div>
-        <div class="card-desc">통합검색 및 네이버쇼핑에서<br>ADVoost 별도 체크</div>
+        <div class="card-icon">🔍</div>
+        <div class="card-title">AD Insight 솔루션<br><span style="font-size:10px; font-weight:500; color:#4ade80; opacity:0.9;">PC 확장프로그램 ver</span></div>
+        <div class="card-desc">쇼핑광고/애드부스트 감지<br>스크립트 감지 / 키워드 인사이트</div>
 
       </div>
     </div>
@@ -986,8 +986,8 @@ function downloadPcSolution() {
 
 function downloadGfaSolution() {
   const a = document.createElement('a');
-  a.href = 'https://github.com/amvely/solutions/releases/download/check/N.GFA.zip';
-  a.download = 'N.GFA.zip';
+  a.href = 'https://github.com/amvely/solutions/releases/download/Ad_insight/insight.zip';
+  a.download = 'insight.zip';
   document.body.appendChild(a);
   a.click();
   document.body.removeChild(a);
