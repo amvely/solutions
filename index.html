@@ -346,6 +346,12 @@
   .welcome-card[data-app="9"]:hover { border-color: rgba(74,222,128,0.5); }
   .welcome-card[data-app="9"]::after { background: radial-gradient(circle at 80% 20%, rgba(74,222,128,0.08), transparent 60%); }
 
+  .rail-item[data-app="10"] { color: #4DB8FF; }
+  .rail-item[data-app="10"].active { background: rgba(77,184,255,0.15); }
+  .menu-item[data-app="10"].active { background: rgba(77,184,255,0.1); color: #7cccff; }
+  .welcome-card[data-app="10"]:hover { border-color: rgba(77,184,255,0.5); }
+  .welcome-card[data-app="10"]::after { background: radial-gradient(circle at 80% 20%, rgba(77,184,255,0.08), transparent 60%); }
+
   .card-icon { font-size: 28px; line-height: 1; }
   .card-title { font-size: 13px; font-weight: 700; color: var(--text); }
   .card-desc { font-size: 11px; color: var(--muted); line-height: 1.5; }
@@ -554,6 +560,10 @@
   <button class="rail-item" data-app="9"
     onmouseenter="openPopup(9)" onclick="mobileTabClick(event,9,'download9')" title="AD Insight 솔루션">
     🔍
+  </button>
+  <button class="rail-item" data-app="10"
+    onmouseenter="openPopup(10)" onclick="mobileTabClick(event,10,'download10')" title="이미지 다운로드 솔루션">
+    📷
   </button>
 </div>
 
@@ -809,6 +819,35 @@
   </div>
 </div>
 
+<!-- 앱10: 이미지 다운로드 솔루션 -->
+<div class="popup-panel" id="popup-10" onmouseenter="keepOpen(10)" onmouseleave="closePopup()">
+  <div class="popup-header">
+    <div class="popup-app-badge"><span style="font-size:10px; font-weight:500; color:#4DB8FF; opacity:0.9;">📷 이미지다운로드</span></div>
+    <h3>이미지 다운로드<br>솔루션</h3>
+    <p>웹사이트 이미지 다운로드용<br>PC 확장프로그램</p>
+  </div>
+  <div class="popup-menu">
+    <div class="menu-section-label">설치</div>
+    <button class="menu-item" data-app="10" onclick="downloadImageSolution()">
+      <span class="item-icon">⬇️</span><span class="item-label">확장프로그램 다운로드</span>
+    </button>
+    <div class="menu-section-label">단축키</div>
+    <button class="menu-item" data-app="10" onclick="downloadImageSolution()">
+      <span class="item-icon">⌨️</span><span class="item-label">Alt + S 선택 이미지</span>
+    </button>
+    <button class="menu-item" data-app="10" onclick="downloadImageSolution()">
+      <span class="item-icon">⌨️</span><span class="item-label">Alt + A 전체 이미지</span>
+    </button>
+  </div>
+  <div class="popup-footer">
+    <button class="launch-btn" style="background:rgba(77,184,255,0.18);color:#7cccff;" onclick="downloadImageSolution(); closePopup();">
+      ⬇️ 이미지 솔루션 다운로드
+    </button>
+  </div>
+</div>
+
+
+
 <!-- 메인 영역 -->
 <div id="main-area">
   <!-- 웰컴 화면 -->
@@ -871,6 +910,12 @@
         <div class="card-desc">쇼핑광고/애드부스트 감지<br>스크립트 감지 / 키워드 인사이트</div>
 
       </div>
+      <div class="welcome-card" data-app="10" onclick="downloadImageSolution()">
+        <div class="card-icon">📷</div>
+        <div class="card-title">이미지 다운로드 솔루션<br><span style="font-size:10px; font-weight:500; color:#4DB8FF; opacity:0.9;">PC 확장프로그램 ver</span></div>
+        <div class="card-desc">웹사이트에서 이미지 다운로드<br>Alt+S = 선택 이미지 / Alt+A = 전체 이미지</div>
+
+      </div>
     </div>
     </div>
   </div>
@@ -918,6 +963,8 @@ function mobileTabClick(e, appId, mode) {
       window.open('https://amvely.github.io/db', '_blank');
     } else if (mode === 'download9') {
       downloadGfaSolution();
+    } else if (mode === 'download10') {
+      downloadImageSolution();
     } else {
       launchApp(appId);
     }
@@ -938,6 +985,8 @@ function mobileTabClick(e, appId, mode) {
       window.open('https://amvely.github.io/db', '_blank');
     } else if (mode === 'download9') {
       downloadGfaSolution();
+    } else if (mode === 'download10') {
+      downloadImageSolution();
     } else {
       launchApp(appId);
     }
@@ -988,6 +1037,15 @@ function downloadGfaSolution() {
   const a = document.createElement('a');
   a.href = 'https://github.com/amvely/solutions/releases/download/Ad_insight/insight.zip';
   a.download = 'insight.zip';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+}
+
+function downloadImageSolution() {
+  const a = document.createElement('a');
+  a.href = 'https://github.com/amvely/solutions/releases/download/image/image.zip';
+  a.download = 'image.zip';
   document.body.appendChild(a);
   a.click();
   document.body.removeChild(a);
